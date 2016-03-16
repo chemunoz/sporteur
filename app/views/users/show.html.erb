@@ -1,0 +1,8 @@
+<h1>USER PROFILE</h1>
+
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<a href="<%= user_teams_path(current_user.id) %>"><button class="btn btn-success" data-hook="join-team">JOIN A TEAM</button></a>
+<button class="btn btn-success" data-hook="create-team">CREATE A TEAM</button>
+

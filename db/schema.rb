@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316095748) do
+ActiveRecord::Schema.define(version: 20160316152939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "athletes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.integer  "sport_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "athletes", ["role_id"], name: "index_athletes_on_role_id", using: :btree
-  add_index "athletes", ["sport_id"], name: "index_athletes_on_sport_id", using: :btree
-  add_index "athletes", ["user_id"], name: "index_athletes_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +28,24 @@ ActiveRecord::Schema.define(version: 20160316095748) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "tshirtcolor"
+    t.string   "address"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "teams_users", id: false, force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

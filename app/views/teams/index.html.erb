@@ -1,9 +1,9 @@
 <ul>
 <%counter=1%>
-  <% @users.each do |usr| %>
+  <% @teams.each do |tem| %>
     <li class="list-unstyled">
       <button class="btn" %>
-        <%=counter%>.- <%= usr.name %>
+        <%=counter%>.- <%= tem.name %>
       </button>
     </li>
     <%counter=counter+1%>

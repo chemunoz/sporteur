@@ -1,0 +1,12 @@
+<!-- List of pokemon -->
+<ul>
+<%counter=1%>
+  <% @users.each do |usr| %>
+    <li class="list-unstyled">
+      <button class="btn" %>
+        <%=counter%>.- <%= usr.email %>
+      </button>
+    </li>
+    <%counter=counter+1%>
+  <% end %>
+</ul>

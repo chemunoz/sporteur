@@ -28,7 +28,7 @@
 
           <% if user_signed_in? %>
             <li class="col-md">
-              <%= link_to edit_user_registration_path do %>
+              <%= link_to user_path(current_user.id) do %>
                 <i class="material-icons be-icon">face</i> Profile
               <% end %>
             </li>

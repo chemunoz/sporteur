@@ -1,5 +1,6 @@
 class Team < ActiveRecord::Base
   has_and_belongs_to_many :users
+  has_many :matches
 
   def create
      @user = User.find(params[:user_id])

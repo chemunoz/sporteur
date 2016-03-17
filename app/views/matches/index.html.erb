@@ -1,12 +1,15 @@
 <div class="row">
-  <% @teams.each do |tem| %>
+  <% @matches.each do |mat| %>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <img src="https://revista.pistaenjuego.com/wp-content/uploads/2012/10/varlion.jpg" alt="raqueta" class="team-logo">
+        <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg">
         <div class="caption">
-          <h3><%= tem.name %></h3>
+          <h3><%= mat.date %></h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, laudantium explicabo doloribus assumenda illum quisquam cumque vel omnis reiciendis, sapiente voluptatem, asperiores maxime, non modi pariatur debitis laboriosam cupiditate dolores.</p>
-          <p><a href="#" class="btn btn-primary" role="button">JOIN!</a></p>
+          <p>
+          <a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">DETAILS</a>
+          <a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">JOIN!</a>
+          </p>
         </div>
       </div>
     </div>

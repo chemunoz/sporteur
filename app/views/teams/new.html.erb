@@ -1,0 +1,14 @@
+<h2>Creating a new TEAM</h2>
+
+<%= form_for [@team] do |f|%>
+  <%= f.label :name%>
+  <%= f.text_field :name%>
+  <br>
+  <%= f.label :tshirt_color%>
+  <%= f.text_field :tshirt_color%>
+  <br>
+  <%= f.label :address%>
+  <%= f.date_field :address%>
+  <br>
+  <%= f.submit 'Save'%>
+<%end%>

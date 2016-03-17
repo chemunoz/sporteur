@@ -1,11 +1,14 @@
-<ul>
-<%counter=1%>
+<div class="row">
   <% @users.each do |usr| %>
-    <li class="list-unstyled">
-      <button class="btn" %>
-        <%=counter%>.- <%= usr.name %>
-      </button>
-    </li>
-    <%counter=counter+1%>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src="/assets/user.png" alt="user" class="team-logo">
+        <div class="caption">
+          <h3><%= usr.name %></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, laudantium explicabo doloribus assumenda illum quisquam cumque vel omnis reiciendis, sapiente voluptatem, asperiores maxime, non modi pariatur debitis laboriosam cupiditate dolores.</p>
+          <p><a href="<%= user_path(usr.id) %>" class="btn btn-primary" role="button">VIEW PROFILE</a></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

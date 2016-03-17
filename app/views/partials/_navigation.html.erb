@@ -1,6 +1,6 @@
 <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
+    <div class="container2">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -16,13 +16,18 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav horizontal">
           <li>
-            <%= link_to users_path do %>
+            <%= link_to matches_path do %>
               <i class="material-icons be-icon">today</i> MATCHES
             <% end %>
           </li>
           <li>
+            <%= link_to teams_path do %>
+              <i class="material-icons be-icon">supervisor_account</i> TEAMS
+            <% end %>
+          </li>
+          <li>
             <%= link_to users_path do %>
-              <i class="material-icons be-icon">supervisor_account</i> USERS
+              <i class="material-icons be-icon">contacts</i> PLAYERS
             <% end %>
           </li>
 

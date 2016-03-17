@@ -1,0 +1,18 @@
+<div class="row center-xs" >
+  <div class="col-xs-8 col-md-6">
+    <div class="box text-left">
+      <h2>NEW MATCH</h2>
+
+      <%= form_for [@user, @match] do |f|%>
+        <%= f.label :date %>
+        <%= f.datetime_select :date, class: 'form-control' %>
+        <br>
+        <%= f.label :score %>
+        <%= f.text_field :score, class: 'form-control' %>
+        <br>
+        <%= f.submit 'Save' %>
+      <%end%>
+
+    </div>
+  </div>
+</div>

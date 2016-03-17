@@ -4,11 +4,18 @@ Rails.application.routes.draw do
   devise_for :users
   
   # resources :users, only: [:index, :show]
-  # resources :teams, only: [:index, :show]
+  resources :teams, only: [:index]
+  resources :matches, only: [:index, :show, :create]
 
   resources :users, only: [:index, :show] do
-    resources :teams
+    resources :matches do
+      resources :teams
+    end
   end
+
+  # resources :users, only: [:index, :show] do
+  #   resources :teams
+  # end
 
 
 

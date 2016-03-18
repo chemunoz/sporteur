@@ -14,3 +14,5 @@ Team.create name: "Celta de Vigo", tshirt_color: "blue", address: 'Vigo'
 Team.create name: "Steagua de Bucarest", tshirt_color: "red", address: 'Bucaresti'
 Team.create name: "Valencia CF", tshirt_color: "black", address: 'Mestalla'
 
+Match.create venue: "Calle Cadiz s/n", date: Time.now, price: 30.0, creator_id: 1
+

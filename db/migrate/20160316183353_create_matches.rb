@@ -4,8 +4,14 @@ class CreateMatches < ActiveRecord::Migration
       t.references :local_team, references: :teams
       t.references :visit_team, references: :teams
       t.references :creator, reference: :users
+
       t.string :score
       t.datetime :date
+      t.string :venue
+      t.float :price
+      t.integer :winner
+      t.integer :loser
+      t.integer :places
 
       t.timestamps null: false
     end

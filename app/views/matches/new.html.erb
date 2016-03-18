@@ -5,14 +5,34 @@
 
       <%= form_for [@user, @match] do |f|%>
         <%= f.label :date %>
-        <%= f.datetime_select :date, class: 'form-control' %>
+        <%= f.datetime_local_field :date, class: 'sporteur-form-control' %>
         <br>
         <%= f.label :score %>
-        <%= f.text_field :score, class: 'form-control' %>
+        <%= f.text_field :score, class: 'sporteur-form-control' %>
         <br>
         <%= f.submit 'Save' %>
       <%end%>
 
     </div>
   </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
 </div>

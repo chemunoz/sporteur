@@ -9,27 +9,27 @@
 
         <div class="field">
           <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          <%= f.text_field :name, autofocus: true, class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          <%= f.email_field :email, autofocus: true, class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">
           <%= f.label :height %><br />
-          <%= f.number_field :height, placeholder: 'In centimeters', class: 'form-control' %>
+          <%= f.number_field :height, placeholder: 'In centimeters', class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">
           <%= f.label :weight %><br />
-          <%= f.number_field :weight, placeholder: 'In kilos', class: 'form-control' %>
+          <%= f.number_field :weight, placeholder: 'In kilos', class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">
           <%= f.label :hand_orientation %><br />
-          <%= f.text_field :hand_orientation, class: 'form-control' %>
+          <%= f.text_field :hand_orientation, class: 'sporteur-form-control' %>
         </div>        
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -38,17 +38,17 @@
 
         <div class="field">
           <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          <%= f.password_field :password, autocomplete: "off", class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">
           <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+          <%= f.password_field :current_password, autocomplete: "off", class: 'sporteur-form-control' %>
         </div>
 
         <div class="actions">

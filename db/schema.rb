@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20160318093328) do
     t.integer  "winner"
     t.integer  "loser"
     t.integer  "places"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "places_busy",   default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "matches_users", id: false, force: :cascade do |t|

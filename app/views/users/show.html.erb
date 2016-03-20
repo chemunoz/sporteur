@@ -1,11 +1,30 @@
-<h1>USER PROFILE</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>USER PROFILE</h1>
+  </div>
+</div>
 
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
+<div class="row">
 
-<% if current_user.id==@user.id %>
-  <a href="<%= user_matches_path(current_user) %>" class="btn btn-success" data-hook="my-matches">MY MATCHES</a>
-  <a href="<%= new_user_match_path(current_user.id) %>" class="btn btn-success" data-hook="create-match">CREATE MATCH</a>
+  <div class="col-xs profile">
+    <p class="sporteur-form-control">Name: <%= @user.name %></p>
+    <p class="sporteur-form-control">Height: <%= @user.height %></p>
+    <p class="sporteur-form-control">Weight: <%= @user.weight %></p>
+    <p class="sporteur-form-control">Hand-Orientation: <%= @user.hand_orientation %></p>
+    <p class="sporteur-form-control">Foot-Orientation: <%= @user.foot_orientation %></p>
+  </div>
 
-  <a href="<%= edit_user_registration_path %>" class="btn btn-success">EDIT PROFILE</a>
-<% end %>
+  <div class="col-xs">
+    <% if current_user.id==@user.id %>
+      <a href="<%= user_matches_path(current_user) %>" class="btn btn-success" 
+      data-hook="my-matches">MY MATCHES</a>
+      
+      <a href="<%= new_user_match_path(current_user.id) %>" 
+      class="btn btn-success" data-hook="create-match">CREATE MATCH</a>
+
+      <a href="<%= edit_user_registration_path %>" class="btn btn-success">EDIT PROFILE</a>
+    <% end %>
+  </div>    
+
+</div>
+

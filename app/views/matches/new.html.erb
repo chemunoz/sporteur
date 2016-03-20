@@ -3,36 +3,27 @@
     <div class="box text-left">
       <h2>NEW MATCH</h2>
 
+        <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg">       
+
       <%= form_for [@user, @match] do |f|%>
         <%= f.label :date %>
         <%= f.datetime_local_field :date, class: 'sporteur-form-control' %>
         <br>
+        <%= f.label :venue %>
+        <%= f.text_field :venue, class: 'sporteur-form-control' %>
+        <br>
         <%= f.label :score %>
         <%= f.text_field :score, class: 'sporteur-form-control' %>
+        <br>
+        <%= f.label :price %>
+        <%= f.number_field :price, :class => 'text_field sporteur-form-control', :step => 'any' %>
+        <br>
+        <%= f.label :places %>
+        <%= f.number_field :places, class: 'sporteur-form-control', value: 4 %>
         <br>
         <%= f.submit 'Save' %>
       <%end%>
 
     </div>
   </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
 </div>

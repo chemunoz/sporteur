@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>MATCH DETAILS</h1>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-xs match">
+    <div id="map"></div>
+  </div>
+
+  <div class="col-xs match">
+    <h3>Match Details...</h3>
+    <p class="sporteur-form-control">Score: <%= @match.score %></p>
+    <p class="sporteur-form-control">Date: <%= @match.date %></p>
+    <p class="sporteur-form-control">Venue: <%= @match.venue %></p>
+    <p class="sporteur-form-control">Price: <%= @match.price %> €</p>
+    <p class="sporteur-form-control">Places: <%= @match.places %></p>
+    <p class="sporteur-form-control">Busy Places: <%= @match.places_busy %></p>
+    
+    <% for i in 0..(@match.places/2)-1 %>
+    
+      <% if @team_local.users[i]!=nil %>
+        <a href="#" class="btn btn-primary"><%= @team_local.users[i].name %></a>
+      <% else %>
+        <a href="#" class="btn btn-primary">LOCAL PLAYER</a>
+      <% end %>
+    <% end %>
+
+    <% for i in 0..(@match.places/2)-1 %>
+      <% if @team_visit.users[i]!=nil %>
+        <a href="#" class="btn btn-success"><%= @team_visit.users[i].name %></a>
+      <% else %>
+        <a href="#" class="btn btn-success">VISIT PLAYER</a>
+      <% end %>
+    <% end %>
+
+
+
+   
+  </div>
+
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>

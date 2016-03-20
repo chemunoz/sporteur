@@ -12,6 +12,7 @@ class CreateMatches < ActiveRecord::Migration
       t.integer :winner
       t.integer :loser
       t.integer :places
+      t.integer :places_busy, default: 0
 
       t.timestamps null: false
     end

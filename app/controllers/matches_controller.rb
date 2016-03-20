@@ -9,6 +9,35 @@ class MatchesController < ApplicationController
     end
   end
 
+  def show
+    # @players_local = nil
+    # @players_visit = nil
+
+    @match = Match.find_by(id: params[:id])
+    @team_local = Team.find_by(id: @match.local_team_id)
+    @team_visit = Team.find_by(id: @match.visit_team_id)
+
+    # @players_local = @team_local.users
+    # @players_visit = @team_visit.users
+    
+
+    # while @players_local.count < (@match.places/2)
+    #   @players_local << @team_local.users[i]
+    #   i++
+    # end
+    
+    # if @team_local
+    #   @players_local = @team_local.users
+    # end
+    # if @team_visit
+    #   @players_visit = @team_visit.users
+    # end
+    
+    # @players = @match.users
+    
+    
+  end
+
   def new
     @user = current_user
     #@match = Match.new
@@ -16,35 +45,36 @@ class MatchesController < ApplicationController
   end
 
   def create
-    # date: "2016-03-21 00:00:00"
-    fecha = params[:match]['date(1i)']+"-"+params[:match]['date(2i)']+"-"+params[:match]['date(3i)'] + " " + params[:match]['date(4i)'] + ":" + params[:match]['date(5i)']
-    @match = current_user.matches.new(date: fecha, score: params[:match][:score], creator_id: current_user.id)
-    #@article = Article.new(article_params)
-    #@article = current_user.articles.new(article_params)
-
-    if @match.save
-      redirect_to matches_path, notice: 'Match was successfully created.' 
-    else
-      render :new
-    end
+   @user = User.find(current_user.id)
+   create_teams
+   # @match = @user.matches.new(match_params)
+   @match = Match.new(match_params)
+   @match.local_team_id = @local_team.id
+   @match.visit_team_id = @visit_team.id
+   @match.creator_id = current_user.id
+   @match.places_busy = 1
+   
+   if @match.save
+     # @user.matches << @match 
+     #redirect_to action: 'index', user_id: @user.id 
+     redirect_to matches_path, notice: 'Match was successfully created.' 
+   else
+     render 'new'
+   end
   end
 
-  def create
-   @user = User.find(params[:user_id])
-   @match = @user.matches.new(match_params)
-   @match.creator_id = current_user.id
-     if @match.save
-       @user.matches << @match 
-       #redirect_to action: 'index', user_id: @user.id 
-       redirect_to matches_path, notice: 'Match was successfully created.' 
-     else
-       render 'new'
-     end
- end
+  def join
+
+  end
 
 
   private
   def match_params
-    params.require(:match).permit(:date, :score)
+    params.require(:match).permit(:date, :score, :venue, :price, :places)
+  end
+
+  def create_teams
+    @local_team = @user.teams.create
+    @visit_team = Team.create
   end
 end

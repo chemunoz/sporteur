@@ -19,15 +19,15 @@
       <%= f.datetime_local_field :date, class: 'sporteur-form-control' %>
       <br>
       <%= f.label :venue %>
-      <%= f.text_field :venue, class: 'sporteur-form-control', id:'venue' %>
+      <%= f.text_field :venue, placeholder: 'Enter a location', class: 'sporteur-form-control', id:'venue' %>
       <%= f.text_field :lat, class: 'sporteur-form-control hidden', id:'lat_form' %>
       <%= f.text_field :lng, class: 'sporteur-form-control hidden', id:'lng_form' %>
       <br>
       <%= f.label :score %>
-      <%= f.text_field :score, class: 'sporteur-form-control'%>
+      <%= f.text_field :score, placeholder: 'Leave blank if the match has not yet played', class: 'sporteur-form-control'%>
       <br>
       <%= f.label :price %>
-      <%= f.number_field :price, :class => 'text_field sporteur-form-control', :step => 'any' %>
+      <%= f.number_field :price, placeholder: 'Total amount (in Euros) for play the match', :class => 'text_field sporteur-form-control', :step => 'any' %>
       <br>
       <%= f.label :places %>
       <%= f.number_field :places, class: 'sporteur-form-control', value: 4 %>

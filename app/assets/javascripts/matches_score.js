@@ -1,16 +1,3 @@
-// function call_Ajax(method, uri, success_callback){
-//   console.log(method);
-//   console.log(uri);
-//   console.log(success_callback);
-
-//   $.ajax({
-//     type: method,
-//     url: uri,
-//     success: success_callback,
-//     //dataType: 'json'
-//   });
-// }
-
 $(document).ready(function(){
   $('#submitScore').click(function(event){
     event.preventDefault();
@@ -38,6 +25,27 @@ $(document).ready(function(){
       },
       dataType: 'json'
     });
-    $('#myModal').modal(toggle);
+    $('#myModal').modal('toggle');
   })
+
+
+
+  $('.my-match-button').click(function(event){
+    
+    var equip = $(event.currentTarget).data("equip");
+    var score = $('#score'+equip)[0].innerText;
+    // 6-2 2-6 7-5 - -
+    $('[name="games1-local"]').val(score[0]);
+    $('[name="games1-visit"]').val(score[2]);
+    $('[name="games2-local"]').val(score[4]);
+    $('[name="games2-visit"]').val(score[6]);
+    $('[name="games3-local"]').val(score[8]);
+    $('[name="games3-visit"]').val(score[10]);
+    $('[name="games4-local"]').val(score[12]);
+    $('[name="games4-visit"]').val(score[14]);
+    $('[name="games5-local"]').val(score[16]);
+    $('[name="games5-visit"]').val(score[18]);
+  })
+
+
 });

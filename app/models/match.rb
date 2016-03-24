@@ -3,6 +3,7 @@ class Match < ActiveRecord::Base
   belongs_to :visit, class_name: 'Team', foreign_key: 'visit_team_id'
   belongs_to :creator, class_name: 'User'
   has_and_belongs_to_many :users
+  has_many :points
 
   validates :date, presence: true
   
@@ -26,6 +27,7 @@ class Match < ActiveRecord::Base
   def rivals(user)
     local.users.include?(user) ? visit.users : local.users
   end
+
 
   private
   def team_params

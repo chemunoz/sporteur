@@ -12,14 +12,15 @@
 
   <div class="col-xs match">
     <h3>Match Details...</h3>
-    <p class="sporteur-form-control">Score: <%= @match.score %></p>
+    <p class="sporteur-form-control">Score: <%= build_score(@match) %></p>
     <p class="sporteur-form-control">Date: <%= @match.date %></p>
     <p class="sporteur-form-control venue">Venue: <%= @match.venue %></p>
     <p class="sporteur-form-control">Price: <%= @match.price %> €</p>
     <p class="sporteur-form-control">Places: <%= @match.places %></p>
-    <p class="sporteur-form-control">Busy Places: <%= @match.places_busy %></p>
+    <p class="sporteur-form-control">Free Places: <%= @match.places_busy %></p>
     <p class="sporteur-form-control lat hidden"><%= @match.lat %></p>
     <p class="sporteur-form-control lng hidden"><%= @match.lng %></p>
+    
     
     <%= render 'match_players', team: @team_local, type: 'btn-primary' %>
     <%= render 'match_players', team: @team_visit, type: 'btn-success' %>

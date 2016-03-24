@@ -5,7 +5,6 @@ class CreateMatches < ActiveRecord::Migration
       t.references :visit_team, references: :teams
       t.references :creator, reference: :users
 
-      t.string :score
       t.datetime :date
       t.string :venue
       t.string :lat

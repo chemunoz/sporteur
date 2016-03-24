@@ -8,4 +8,16 @@ module MatchesHelper
     match.visit.exists?(id:team.id) || 
     match.local.exists?(id:team.id)
   end
+
+  # def player_in_match?(@match)
+  # end
+
+  def build_score(match)
+    points = match.points
+    score = ""
+    points.each do |p|     
+      score << "#{p.local_points}-#{p.visit_points} "
+    end
+    return score
+  end
 end

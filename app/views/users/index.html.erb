@@ -4,7 +4,7 @@
       <div class="thumbnail">
         <!-- <img src="/assets/user.png" alt="user" class="logo"> -->
         <a href="<%= user_path(usr.id) %>"><%= image_tag usr.avatar.url(:thumb), class: 'profile-avatar-index' %></a>
-        <div class="caption">
+        <div class="caption user-index">
           <h3><%= usr.name %></h3>
           <p><a href="<%= user_path(usr.id) %>" class="btn btn-primary" role="button">VIEW PROFILE</a></p>
         </div>

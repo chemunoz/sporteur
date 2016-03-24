@@ -1,0 +1,22 @@
+<span class="title">MY MATCHES</span>
+
+<div class="my-matches">
+  <% if @user_matches %>
+    <% @user_matches.each do |um| %>
+      <div class="my-match">
+        <span><%= um.date.strftime('%F') %></span>
+        <span><%= um.venue %></span>
+        <span><%= um.price %> €</span>
+        <span><%= um.score %></span>
+        <a href="<%= edit_user_match_path(current_user, um.id) %>" class=" btn btn-success item crud-match my-match-button">EDIT</a>
+        <a href="#" class="item btn btn-primary btn-score my-match-button" 
+        data-toggle="modal" data-target="#myModal" data-equip="<%= um.id %>">SET SCORE</a>
+      </div>
+      <br>
+    <% end %>
+  <% else %>
+    <h5>No matches created yet...</h5>
+  <% end %>
+
+  <%= render 'score_modal' %>
+</div>

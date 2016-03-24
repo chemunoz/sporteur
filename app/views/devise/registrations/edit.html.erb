@@ -13,8 +13,13 @@
         </div>
 
         <div class="field">
+          <%= f.label :avatar %><br />
+          <%= f.file_field :avatar, class: 'sporteur-form-control' %>
+        </div>        
+
+        <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: 'sporteur-form-control' %>
+          <%= f.email_field :email, class: 'sporteur-form-control' %>
         </div>
 
         <div class="field">

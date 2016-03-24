@@ -8,6 +8,8 @@ class CreateMatches < ActiveRecord::Migration
       t.string :score
       t.datetime :date
       t.string :venue
+      t.string :lat
+      t.string :lng
       t.float :price
       t.integer :winner
       t.integer :loser

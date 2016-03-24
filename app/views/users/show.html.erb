@@ -4,27 +4,36 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row profile-container center-xs">
 
-  <div class="col-xs profile">
+  <div class="col-xs-8 profile">
+
     <p class="sporteur-form-control">Name: <%= @user.name %></p>
     <p class="sporteur-form-control">Height: <%= @user.height %></p>
     <p class="sporteur-form-control">Weight: <%= @user.weight %></p>
     <p class="sporteur-form-control">Hand-Orientation: <%= @user.hand_orientation %></p>
-    <p class="sporteur-form-control">Foot-Orientation: <%= @user.foot_orientation %></p>
+    <p class="sporteur-form-control">NTRP (National Tennis Rating Program): <%= @user.ntrp %></p>
+    <% if current_user %>
+      <% if current_user.id==@user.id %>      
+        <a href="<%= new_user_match_path(current_user.id) %>" class="btn btn-success"
+         data-hook="create-match">CREATE MATCH</a>
+        <a href="<%= edit_user_registration_path %>" class="btn btn-success">EDIT PROFILE</a>
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="col-xs">
-    <% if current_user.id==@user.id %>
-      <a href="<%= user_matches_path(current_user) %>" class="btn btn-success" 
-      data-hook="my-matches">MY MATCHES</a>
-      
-      <a href="<%= new_user_match_path(current_user.id) %>" 
-      class="btn btn-success" data-hook="create-match">CREATE MATCH</a>
-
-      <a href="<%= edit_user_registration_path %>" class="btn btn-success">EDIT PROFILE</a>
-    <% end %>
-  </div>    
-
+  <div class="col-xs-4">
+    <%= image_tag @user.avatar.url(:medium), class: 'profile-avatar' %>
+    <!-- <img src="/assets/user.png" alt="user" class="profile-avatar"> -->
+  </div>
 </div>
 
+<% if current_user %>
+  <% if current_user.id==@user.id %>      
+    <div class="row">
+      <div class="col-md">
+        <%= render 'user_matches'%>
+      </div>
+    </div>
+  <% end %>
+<% end %>

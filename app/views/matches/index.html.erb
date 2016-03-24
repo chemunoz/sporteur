@@ -1,17 +1,26 @@
 <div class="row">
+  <div class="col-xs match">
+    <div id="map"></div>
+  </div>
+
+  <div class="col-xs match show_map" style="top:20px;">
+  <h2>MATCHES SCHEDULE</h2>
   <% @matches.each do |mat| %>
-    <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg">
+        <!-- <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg"> -->
         <div class="caption">
-          <h3><%= mat.date %></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, laudantium explicabo doloribus assumenda illum quisquam cumque vel omnis reiciendis, sapiente voluptatem, asperiores maxime, non modi pariatur debitis laboriosam cupiditate dolores.</p>
-          <p>
+          <p class="venue">
+          <h5><%= mat.date!=nil ? mat.date.strftime("%A") +" - " + mat.date.strftime('%v') : mat.date %>
+          </h5>
           <a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">DETAILS</a>
-          <a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">JOIN!</a>
+          <%= mat.venue %>
           </p>
+          <p class="sporteur-form-control lat hidden"><%= mat.lat %></p>
+          <p class="sporteur-form-control lng hidden"><%= mat.lng %></p>
+          
         </div>
-      </div>
-    </div>
+</div>
+    
   <% end %>
+  </div>
 </div>

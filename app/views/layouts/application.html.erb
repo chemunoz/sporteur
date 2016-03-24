@@ -3,8 +3,9 @@
 <head>
   <title>Sporteur</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :javascript_includes %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,5 +15,7 @@
   
   <%= yield %>
   
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
 </body>
 </html>

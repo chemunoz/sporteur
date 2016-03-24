@@ -1,3 +1,52 @@
 // Place all the styles related to the matches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#score-img{
+  float: right;
+  height: 200px;
+  border-radius: 7px;
+}
+
+.score-sets{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.set input{
+  border: 1px solid green;
+  font-size: 1.8em;
+}
+
+.match{
+  padding: 30px;
+}
+
+
+/*USER PROFILE*/
+.my-matches{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-around;
+
+  width: 100%;
+  margin: 0 auto;
+  background-color: tomato;
+}
+
+.my-match{
+  display: inline-block;
+  justify-content: space-between;
+  align-items: center;
+  
+  width: 90%;
+  height: 30px;
+  background-color: yellow;
+  margin: 0px auto;
+}
+
+.my-match-button{
+  height: 28px;
+}

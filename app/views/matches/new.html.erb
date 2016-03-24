@@ -1,29 +1,41 @@
-<div class="row center-xs" >
-  <div class="col-xs-8 col-md-6">
-    <div class="box text-left">
-      <h2>NEW MATCH</h2>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>NEW MATCH</h1>
+  </div>
+</div>
 
-        <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg">       
+<%@match.errors.full_messages.each do |message|%>
+  <div class="">
+    *<%= message%>
+  </div>
+<%end%>
 
-      <%= form_for [@user, @match] do |f|%>
-        <%= f.label :date %>
-        <%= f.datetime_local_field :date, class: 'sporteur-form-control' %>
-        <br>
-        <%= f.label :venue %>
-        <%= f.text_field :venue, class: 'sporteur-form-control' %>
-        <br>
-        <%= f.label :score %>
-        <%= f.text_field :score, class: 'sporteur-form-control' %>
-        <br>
-        <%= f.label :price %>
-        <%= f.number_field :price, :class => 'text_field sporteur-form-control', :step => 'any' %>
-        <br>
-        <%= f.label :places %>
-        <%= f.number_field :places, class: 'sporteur-form-control', value: 4 %>
-        <br>
-        <%= f.submit 'Save' %>
-      <%end%>
+<div class="row new_map">
+  <div class="col-xs match">
+    <!-- <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg">        -->
 
-    </div>
+    <%= form_for [@user, @match] do |f|%>
+      <%= f.label :date %>
+      <%= f.datetime_local_field :date, class: 'sporteur-form-control' %>
+      <br>
+      <%= f.label :venue %>
+      <%= f.text_field :venue, class: 'sporteur-form-control', id:'venue' %>
+      <%= f.text_field :lat, class: 'sporteur-form-control hidden', id:'lat_form' %>
+      <%= f.text_field :lng, class: 'sporteur-form-control hidden', id:'lng_form' %>
+      <br>
+      <%= f.label :score %>
+      <%= f.text_field :score, class: 'sporteur-form-control'%>
+      <br>
+      <%= f.label :price %>
+      <%= f.number_field :price, :class => 'text_field sporteur-form-control', :step => 'any' %>
+      <br>
+      <%= f.label :places %>
+      <%= f.number_field :places, class: 'sporteur-form-control', value: 4 %>
+      <br>
+      <%= f.submit 'Save', class: 'btn btn-success' %>
+    <%end%>
+  </div>
+  <div class="col-xs match">
+    <div id="map"></div>
   </div>
 </div>

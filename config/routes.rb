@@ -3,20 +3,21 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  # resources :users, only: [:index, :show]
-  resources :teams, only: [:index]
-  resources :matches, only: [:index, :show, :create]
+
+  get 'matches/join/:id' => 'matches#join', as: 'join_team'
+  post 'matches/:id/score' => 'matches#score', as: 'match_score'
+  
+  
+  resources :matches, only: [:index, :show, :edit, :update] do
+    resources :teams, only: [:index, :show]
+  end
+  
 
   resources :users, only: [:index, :show] do
-    resources :matches do
-      resources :teams
+    resources :matches, only: [:index, :show, :new, :create, :edit]  do
+      resources :teams, only: [:index, :new, :show, :create]
     end
   end
-
-  # resources :users, only: [:index, :show] do
-  #   resources :teams
-  # end
-
 
 
 

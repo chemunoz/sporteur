@@ -20,11 +20,7 @@
               <i class="material-icons be-icon">today</i> MATCHES
             <% end %>
           </li>
-          <li>
-            <%= link_to teams_path do %>
-              <i class="material-icons be-icon">supervisor_account</i> TEAMS
-            <% end %>
-          </li>
+
           <li>
             <%= link_to users_path do %>
               <i class="material-icons be-icon">contacts</i> PLAYERS
@@ -34,7 +30,7 @@
           <% if user_signed_in? %>
             <li class="col-md">
               <%= link_to user_path(current_user.id) do %>
-                <i class="material-icons be-icon">face</i> Profile
+                <i class="material-icons be-icon">face</i> <%= current_user.name %>
               <% end %>
             </li>
             <li class="col-md">
@@ -42,25 +38,22 @@
                 <i class="material-icons be-icon">power_settings_new</i> Sign Out
               <% end %>
             </li>
+
           <% else %>
             <li class="col-md">
               <%= link_to new_user_session_path do %>
-                <i class="material-icons be-icon">account_circle</i> Sign In
+                <i class="material-icons be-icon">power_settings_new</i> Sign In
               <% end %>
             </li>
             <li class="col-md">
               <%= link_to new_user_registration_path do %>
-                <i class="material-icons be-icon">account_box</i> Sign Up
+                 <i class="material-icons be-icon">account_circle</i> Sign Up
               <% end %>
             </li>
-
-
-                  
-                  
-                <% end %>
-            </ul>
-        </div>
+            <% end %>  
+        </ul>
+      </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
-    </nav>
+  </nav>

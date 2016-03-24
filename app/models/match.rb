@@ -4,6 +4,9 @@ class Match < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
   has_and_belongs_to_many :users
 
+  validates :date, presence: true
+  
+  
   before_save :default_values
   def default_values
     self.places ||= 4
@@ -18,10 +21,14 @@ class Match < ActiveRecord::Base
      else
      render 'new'
      end
-   end
+  end
 
-   private
-   def team_params
+  def rivals(user)
+    local.users.include?(user) ? visit.users : local.users
+  end
+
+  private
+  def team_params
     params.require(:match).permit(:name,:tshirtcolor,:address)
-   end
+  end
 end

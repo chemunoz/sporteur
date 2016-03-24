@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :height
       t.integer :weight
       t.string :hand_orientation
-      t.string :foot_orientation
+      t.float :ntrp, default: 1
 
       t.timestamps null: false
     end

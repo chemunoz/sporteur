@@ -1,11 +1,11 @@
 <div class="row">
   <% @users.each do |usr| %>
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-2" style="top:20px;">
       <div class="thumbnail">
-        <img src="/assets/user.png" alt="user" class="team-logo">
+        <!-- <img src="/assets/user.png" alt="user" class="logo"> -->
+        <a href="<%= user_path(usr.id) %>"><%= image_tag usr.avatar.url(:thumb), class: 'profile-avatar-index' %></a>
         <div class="caption">
           <h3><%= usr.name %></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, laudantium explicabo doloribus assumenda illum quisquam cumque vel omnis reiciendis, sapiente voluptatem, asperiores maxime, non modi pariatur debitis laboriosam cupiditate dolores.</p>
           <p><a href="<%= user_path(usr.id) %>" class="btn btn-primary" role="button">VIEW PROFILE</a></p>
         </div>
       </div>

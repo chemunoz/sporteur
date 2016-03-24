@@ -8,6 +8,9 @@
 User.create name: "Chema", email: "che@che.com", password: 12345678
 User.create name: "Rachel", email: "rach@rach.com", password: 12345678
 User.create name: "Christopher", email: "chris@chris.com", password: 12345678
+User.create name: "Manu", email: "manu@manu.com", password: 12345678
+User.create name: "Pau", email: "pau@pau.com", password: 12345678
+User.create name: "Joaqi", email: "joa@joa.com", password: 12345678
 
 # Team.create name: "Racing de Santander", tshirt_color: "green", address: 'Avenida de El Sardinero'
 # Team.create name: "Celta de Vigo", tshirt_color: "blue", address: 'Vigo'

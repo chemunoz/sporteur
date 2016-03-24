@@ -3,9 +3,9 @@ class MatchesController < ApplicationController
 
   def index
     if params[:user_id]
-      @matches = Match.where(creator_id: params[:user_id]).order(date: :desc)
+      @matches = Match.where(creator_id: params[:user_id]).order(date: :asc)
     else
-      @matches = Match.all
+      @matches = Match.all.order(date: :asc)
     end
   end
 
@@ -67,6 +67,7 @@ class MatchesController < ApplicationController
       end
     else
       for i in 1..5
+        binding.pry
         p = Point.where(match_id: params[:id], order: i)
         p[0].update_attribute(:local_points, params["game#{i}-local"])
         p[0].update_attribute(:visit_points, params["game#{i}-visit"])

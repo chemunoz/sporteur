@@ -4,7 +4,7 @@
   <% if @user_matches %>
     <% @user_matches.each do |um| %>
       <div class="my-match">
-        <span><%= um.date.strftime('%F') %></span>
+        <span><%= um.date.strftime('%F') + ' (' + um.date.strftime("%H:%M") + ')' %></span>
         <span><%= um.venue %></span>
         <span><%= um.price %> €</span>
         <span id="score<%= um.id %>"><%= build_score(um) %></span>

@@ -24,12 +24,18 @@
 }
 
 
+#map {
+  height: 75vh;
+  width: 100%;
+  border-radius: 20px;
+}
+
 /*USER PROFILE*/
 .my-matches{
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: space-around;
+  align-items: space-around;*/
 
   width: 100%;
   margin: 0 auto;
@@ -37,9 +43,9 @@
 }
 
 .my-match{
-  display: inline-block;
-  justify-content: space-between;
-  align-items: center;
+  /*display: inline-block;*/
+ /* justify-content: space-between;
+  align-items: center;*/
   
   width: 90%;
   height: 30px;
@@ -50,3 +56,4 @@
 .my-match-button{
   height: 28px;
 }
+

@@ -23,6 +23,7 @@ function initMap(){
 
   //SHOW View
   if ($('.show_map').length>0){
+    debugger
     var lati = document.getElementsByClassName('lat');
     var long = document.getElementsByClassName('lng');
     var venues = document.getElementsByClassName('venue');

@@ -5,7 +5,6 @@
 </div>
 
 <div class="row profile-container center-xs">
-
   <div class="col-xs-8 profile">
 
     <p class="sporteur-form-control">Name: <%= @user.name %></p>
@@ -30,10 +29,15 @@
 
 <% if current_user %>
   <% if current_user.id==@user.id %>      
-    <div class="row">
-      <div class="col-md">
-        <%= render 'user_matches'%>
+
+    <div class="row profile-container">
+      <div class="col-xs-6">
+        <%= render 'user_matches' %>
+      </div>
+      <div class="col-xs-6 profile-statistics">
+        <p>HOLA</p>
       </div>
     </div>
+
   <% end %>
 <% end %>

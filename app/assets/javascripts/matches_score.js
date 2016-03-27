@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  
   $('#submitScore').click(function(event){
     event.preventDefault();
     event.stopPropagation();
@@ -18,22 +19,22 @@ $(document).ready(function(){
     
     $.ajax({
       type: 'PATCH',
-      url: "/matches/"+$('.btn-score').data("equip"),
+      url: "/matches/"+$('.btn-score').data("match"),
       data: sets,
       success: function(success){
         console.log("Updated ok")
       },
       dataType: 'json'
     });
-    $('#myModal').modal('toggle');
+    $('#scoreModal').modal('toggle');
   })
 
 
 
-  $('.my-match-button').click(function(event){
+  $('.my-score').click(function(event){
     
-    var equip = $(event.currentTarget).data("equip");
-    var score = $('#score'+equip)[0].innerText;
+    var match = $(event.currentTarget).data("match");
+    var score = $('#score'+match)[0].innerText;
     // 6-2 2-6 7-5 - -
     $('[name="games1-local"]').val(score[0]);
     $('[name="games1-visit"]').val(score[2]);

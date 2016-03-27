@@ -1,7 +1,7 @@
   
   <% for i in 0..(@match.places/2)-1 %>
     <% if team.users[i]!=nil %>
-      <%= image_tag team.users[i].avatar.url(:thumb), class: 'profile-avatar-index', title: team.users[i].name %>
+      <%= image_tag team.users[i].avatar.url(:thumb), class: type_user, title: team.users[i].name %>
     <% elsif user_signed_in? && !user_belongs_to_match?(@match, current_user) %>
       <a href="<%= join_team_path(team.id) %>" class="btn <%= type %>" data-team="<%= team.id %>">PLAYER</a>
     <% end %>

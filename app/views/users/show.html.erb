@@ -13,31 +13,31 @@
     <p class="sporteur-form-control">Hand-Orientation: <%= @user.hand_orientation %></p>
     <p class="sporteur-form-control">NTRP (National Tennis Rating Program): <%= @user.ntrp %></p>
     <% if current_user %>
-      <% if current_user.id==@user.id %>      
+      <% if current_user==@user %>      
         <a href="<%= new_user_match_path(current_user.id) %>" class="btn btn-success"
          data-hook="create-match">CREATE MATCH</a>
         <a href="<%= edit_user_registration_path %>" class="btn btn-success">EDIT PROFILE</a>
       <% end %>
     <% end %>
   </div>
-
+  
   <div class="col-xs-4">
     <%= image_tag @user.avatar.url(:medium), class: 'profile-avatar' %>
-    <!-- <img src="/assets/user.png" alt="user" class="profile-avatar"> -->
   </div>
 </div>
 
-<% if current_user %>
-  <% if current_user.id==@user.id %>      
 
+<% if current_user %>
+  <% if current_user==@user %>
     <div class="row profile-container">
-      <div class="col-xs-6">
+      <div class="col-xs-12 profile">
         <%= render 'user_matches' %>
       </div>
-      <div class="col-xs-6 profile-statistics">
-        <p>HOLA</p>
+    </div>
+    <div class="row profile-container center-xs">
+      <div class="col-xs-10 profile">
+        <%= render 'user_statistics' %>
       </div>
     </div>
-
   <% end %>
 <% end %>

@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   root 'site#index'
   
   devise_for :users
-  
+
+  #redirect after edit profile
+  get 'user_root' => redirect('/users')
 
   get 'matches/join/:id' => 'matches#join', as: 'join_team'
+
   post 'matches/:id/score' => 'matches#score', as: 'match_score'
+  post 'matches/:id/rivals' => 'matches#handicap_rivals', as: 'match_rivals'
   
   
   resources :matches, only: [:index, :show, :edit, :update] do

@@ -25,10 +25,16 @@
 
 
 #map {
-  height: 75vh;
+  height: 85vh;
   width: 100%;
   border-radius: 20px;
 }
+
+.localteam{
+  border: 3px solid red;
+  padding: 5px;
+}
+
 
 /*USER PROFILE*/
 .my-matches{
@@ -43,17 +49,18 @@
 }
 
 .my-match{
-  /*display: inline-block;*/
- /* justify-content: space-between;
-  align-items: center;*/
-  
-  width: 90%;
-  height: 30px;
   background-color: yellow;
-  margin: 0px auto;
+  padding: 3px;
+  border-radius: 3px;
 }
 
-.my-match-button{
-  height: 28px;
+.my-button{
+  /*height: 28px;*/
+}
+
+.my-handicap-votes{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 

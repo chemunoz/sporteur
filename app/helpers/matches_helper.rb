@@ -8,9 +8,23 @@ module MatchesHelper
     match.visit.exists?(id:team.id) || 
     match.local.exists?(id:team.id)
   end
+  
+  def rival_team(match, team)
+    binding.pry
+    match.not.teams
+  end
 
-  # def player_in_match?(@match)
-  # end
+  def user_wins_match(match, user)
+    if match.winner
+      Team.find(match.winner).users.exists?(user)
+    end
+  end
+
+  def user_lose_match(match, user)
+    if match.loser
+      Team.find(match.loser).users.exists?(user)
+    end
+  end
 
   def build_score(match)
     points = match.points
@@ -20,4 +34,5 @@ module MatchesHelper
     end
     return score
   end
+
 end

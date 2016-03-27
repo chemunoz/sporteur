@@ -16,10 +16,14 @@
   border-radius: 20px;
 }
 
-.profile-avatar-index{
+.profile-avatar-index_local{
   border-radius: 20px;
-  width: 100px;
-  height: 100px;
+  background-color: red;
+}
+
+.profile-avatar-index_visit{
+  border-radius: 20px;
+  background-color: green;
 }
 
 .profile-container{

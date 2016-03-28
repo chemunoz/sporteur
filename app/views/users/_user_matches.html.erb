@@ -1,4 +1,9 @@
-<span class="title">MY MATCHES</span>
+<span class="title">MY MATCHES 
+(Total: <span id="match_total"><%= matches_user_play(current_user,3) %> - </span>
+Played: <span id="match_play"><%= matches_user_play(current_user, 0) %> - </span>
+Wan: <span id="match_win"><%= matches_user_play(current_user,1) %> - </span>
+Losed: <span id="match_lose"><%= matches_user_play(current_user, 2) %>)</span>
+</span>
 <% if @user_matches %>
   <table class="table table-bordered table-hover table-responsive">
     <thead>

@@ -43,8 +43,12 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'rails-erd'
+  gem 'rspec-rails', '~> 3.4'
+  gem 'faker', '~> 1.6.1'
+  gem 'factory_girl_rails', '~> 4.5.0'
+end
 
-
+group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

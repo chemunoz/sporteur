@@ -5,11 +5,11 @@
 </div>
 
 <div class="row profile-container center-xs">
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <%= image_tag @user.avatar.url(:medium), class: 'profile-avatar' %>
   </div>
 
-  <div class="col-xs-4 profile">
+  <div class="col-xs-6 profile">
 
     <p class="sporteur-form-control">Name: <%= @user.name %></p>
     <p class="sporteur-form-control">Height: <%= @user.height %></p>
@@ -25,7 +25,7 @@
     <% end %>
   </div>
   
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <div id="chart"></div>
     </div>
 </div>

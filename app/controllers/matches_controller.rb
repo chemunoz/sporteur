@@ -113,6 +113,7 @@ class MatchesController < ApplicationController
         player.save
       end
     end
+    redirect_to user_path(current_user)
   end
 
 

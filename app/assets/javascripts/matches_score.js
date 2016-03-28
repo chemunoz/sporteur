@@ -17,8 +17,6 @@ $(document).ready(function(){
       "game5-local": $('[name=games5-local]').val(),
       "game5-visit": $('[name=games5-visit]').val()
     };
-    
-    alert("/matches/"+match_selected+'/score');
 
     $.ajax({
       type: 'PATCH',

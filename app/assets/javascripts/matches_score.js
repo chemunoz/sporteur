@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  
+  var match_selected;
+
   $('#submitScore').click(function(event){
     event.preventDefault();
     event.stopPropagation();
@@ -17,9 +18,11 @@ $(document).ready(function(){
       "game5-visit": $('[name=games5-visit]').val()
     };
     
+    alert("/matches/"+match_selected+'/score');
+
     $.ajax({
       type: 'PATCH',
-      url: "/matches/"+$('.btn-score').data("match"),
+      url: "/matches/"+match_selected+'/score',
       data: sets,
       success: function(success){
         console.log("Updated ok")
@@ -35,6 +38,7 @@ $(document).ready(function(){
     
     var match = $(event.currentTarget).data("match");
     var score = $('#score'+match)[0].innerText;
+    match_selected = match;
     // 6-2 2-6 7-5 - -
     $('[name="games1-local"]').val(score[0]);
     $('[name="games1-visit"]').val(score[2]);

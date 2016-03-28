@@ -34,7 +34,8 @@
 
         <div class="field">
           <%= f.label :hand_orientation %><br />
-          <%= f.text_field :hand_orientation, class: 'sporteur-form-control' %>
+          
+          <%= f.select(:hand_orientation, options_for_select([["Right Hand","Right Hand"], ["Left Hand","Left Hand"], ["Ambidextrous","Ambidextrous"]])) %>
         </div>        
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

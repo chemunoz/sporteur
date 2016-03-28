@@ -23,9 +23,7 @@ class MatchesController < ApplicationController
 
 
   def new
-    @user = current_user
     @match = Match.new
-    #@match = @user.matches.new
   end
 
 
@@ -53,10 +51,32 @@ class MatchesController < ApplicationController
 
 
   def update
+    binding.pry
+    @match=Match.find(params[:id])
+    if @match.update_attributes match_params
+      redirect_to action: :index
+    else
+      render 'edit'
+    end
+  end
+
+
+  def join
+    @user = User.find(current_user.id)
+    team = Team.find_by(id:params[:id])
+    mat = Match.where("(local_team_id = #{team.id} OR visit_team_id = #{team.id})")
+
+    if @user.teams << team
+      mat.first.update_attribute(:places_busy, mat.first.places_busy+1)
+      redirect_to matches_path, notice: 'Youre in!.' 
+    end
+    
+  end
+
+  def score
     @match = Match.find(params[:id])
 
     unless Point.find_by(match_id: params[:id])
-      #Each set
       for i in 1..5
         points = Point.new
         points.match_id = @match.id
@@ -75,25 +95,6 @@ class MatchesController < ApplicationController
     who_wins(params)  
   end
 
-
-
-
-  def join
-    @user = User.find(current_user.id)
-    team = Team.find_by(id:params[:id])
-    mat = Match.where("(local_team_id = #{team.id} OR visit_team_id = #{team.id})")
-
-    if @user.teams << team
-      mat.first.update_attribute(:places_busy, mat.first.places_busy+1)
-      redirect_to matches_path, notice: 'Youre in!.' 
-    end
-    
-  end
-
-  def score
-    binding.pry
-    #params
-  end
 
   def handicap_rivals
     # {"match_id"=>"1", "rival0_id"=>"2", "rival0_vote"=>"", "rival1_id"=>"4", "rival1_vote"=>"", "controller"=>"matches", "action"=>"handicap_rivals", "id"=>"1"}
@@ -125,6 +126,7 @@ class MatchesController < ApplicationController
     @visit_team = Team.create
   end
 
+
   def who_wins(params)
     win_lose = 0
 
@@ -142,4 +144,5 @@ class MatchesController < ApplicationController
     end
     m.save
   end
+
 end

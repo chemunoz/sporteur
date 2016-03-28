@@ -5,7 +5,11 @@
 </div>
 
 <div class="row profile-container center-xs">
-  <div class="col-xs-8 profile">
+  <div class="col-xs-4">
+    <%= image_tag @user.avatar.url(:medium), class: 'profile-avatar' %>
+  </div>
+
+  <div class="col-xs-4 profile">
 
     <p class="sporteur-form-control">Name: <%= @user.name %></p>
     <p class="sporteur-form-control">Height: <%= @user.height %></p>
@@ -22,15 +26,16 @@
   </div>
   
   <div class="col-xs-4">
-    <%= image_tag @user.avatar.url(:medium), class: 'profile-avatar' %>
-  </div>
+    <div id="chart"></div>
+    </div>
 </div>
 
 
+
+
 <% if current_user %>
-  <% if current_user==@user %>
     <div class="row profile-container">
-      <div class="col-xs-12 profile">
+      <div class="col-xs-12">
         <%= render 'user_matches' %>
       </div>
     </div>
@@ -39,5 +44,4 @@
         <%= render 'user_statistics' %>
       </div>
     </div>
-  <% end %>
 <% end %>

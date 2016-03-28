@@ -1,4 +1,5 @@
 module MatchesHelper
+
   def user_belongs_to_match?(match, user)
     match.visit.users.exists?(id:current_user.id) || 
     match.local.users.exists?(id:current_user.id)
@@ -9,10 +10,10 @@ module MatchesHelper
     match.local.exists?(id:team.id)
   end
   
-  def rival_team(match, team)
-    binding.pry
-    match.not.teams
-  end
+  # def rival_team(match, user)
+  #   binding.pry
+  #   match.not.teams
+  # end
 
   def user_wins_match(match, user)
     if match.winner
@@ -35,4 +36,7 @@ module MatchesHelper
     return score
   end
 
+  def voted_rival?(match, rival)
+    Handicap.where(match_id: match, voted_player: rival).exists?
+  end
 end

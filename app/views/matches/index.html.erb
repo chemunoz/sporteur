@@ -5,10 +5,9 @@
 
   <div class="col-xs match show_map" style="top:20px;">
   <h2>MATCHES SCHEDULE</h2>
-  <% if @matches %>
+  <% if @matches.length != 0 %>
     <% @matches.each do |mat| %>
         <div class="thumbnail">
-          <!-- <img src="http://clubparayas.es/wp-content/uploads/2013/11/pista-padel-raquetas-2.jpg"> -->
           <div class="caption">
             <p class="venue">
             <h5><%= mat.date!=nil ? mat.date.strftime("%A") +" - " + mat.date.strftime('%v') + ' (' + mat.date.strftime("%H:%M") + ')' : mat.date %>
@@ -16,13 +15,14 @@
             <a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">DETAILS</a>
             <%= mat.venue %>
             </p>
+            <p>Free places: <%= mat.places - mat.places_busy %></p>
             <p class="sporteur-form-control lat hidden"><%= mat.lat %></p>
             <p class="sporteur-form-control lng hidden"><%= mat.lng %></p>
             
           </div>
         </div>
     <% end %>
-  <% else%>
+  <% else %>
     <h4>There is no matches for now... try later</h4>
   <% end %>
   </div>

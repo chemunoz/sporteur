@@ -16,29 +16,38 @@ function initMap(){
       lat: 40.4382915,
       lng: -3.6836605
     };
-    zoom=8;
-    createMap(myPosition, zoom);
+
+    if ($('.edit_map').length>0){
+      zoom=12;
+      createMap(myPosition, zoom);
+      createMarker(myPosition, document.getElementsByClassName('venue'));
+    }
+    else
+      {
+      zoom=8;
+      createMap(myPosition, zoom);
+      }
     setupAutocomplete();
   }
 
   //SHOW View
-  if ($('.show_map').length>0){
+  if ($('.show_map').length>0){  
     var lati = document.getElementsByClassName('lat');
     var long = document.getElementsByClassName('lng');
     var venues = document.getElementsByClassName('venue');
 
     //Map
-    if (lati.length>1){
+    if (lati.length>1 || lati.length===0){
       zoom=8;
       createMap({lat: 40.4260577,lng: -3.7556513}, zoom);
     }else{
       zoom=12;
       createMap({lat: parseFloat(lati[0].innerText),lng: parseFloat(long[0].innerText)}, zoom);
     }
-
+    
     for (var i=lati.length-1; i>=0; i--){  
-      isNaN(parseFloat(lati[i].innerText)) ? latitud=40.4260577 : latitud=parseFloat(lati[i].innerText)
-      isNaN(parseFloat(long[i].innerText)) ? longitud=-3.7556513 : longitud=parseFloat(long[i].innerText)
+        isNaN(parseFloat(lati[i].innerText)) ? latitud=40.4260577 : latitud=parseFloat(lati[i].innerText);
+        isNaN(parseFloat(long[i].innerText)) ? longitud=-3.7556513 : longitud=parseFloat(long[i].innerText);
 
       var myPosition = {
         lat: latitud,

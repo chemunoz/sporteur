@@ -27,6 +27,8 @@ $(document).ready(function(){
   })
 
 
+
+
   $('.my-handicap').click(function(event){
     $('.modal-handicap-body').empty();
     $('.modal-handicap-body').append('<p>Puntúa a tus rivales según el NTRP (National Tennis Rating Program).La puntuación va del 1.0 al 7.0:</p>');
@@ -38,9 +40,12 @@ $(document).ready(function(){
       if (current_match === $(this).attr("data-player-match")){
         $('.modal-handicap-body').append('<p class="title" id="rival'+ number +'" data-rival="'+$(this).attr("data-rival")+'" data-vote="" data-match=""></p>');
         var html=""; 
-        for (var j=2; j<13; j++){          
+        if ($(this).attr("vrival")==='false'){
+        for (var j=2; j<13; j++){ 
               html += "<label class='btn btn-info'><input type='radio' name='options' id='option"+ j +"' autocomplete='off'> "+parseFloat(j/2)+"</label>";
             }
+          }else
+            html = '<p>YA votaste!! ;D</p>';
         $('.modal-handicap-body').append('<div class="btn-group group-rival'+ number +'" data-toggle="buttons">'+html+'</div>');
 
         $('#rival'+number).text($(this).attr("data-rival-name"));
@@ -48,8 +53,9 @@ $(document).ready(function(){
         number += 1;
       }
     });
+
     $('.modal-handicap-body').append('<br><a data-dismiss="modal" data-toggle="modal" href="#lost">Instrucciones para la evaluación</a>');
-    
+
 
     $(".group-rival0 .btn").click(function (event) {
     console.log(event.currentTarget.innerText);

@@ -1,40 +1,67 @@
 <span class="title">MY MATCHES</span>
-
-
-  <% if @user_matches %>
-    <% @user_matches.each do |um| %>
-      <div class="my-match">
-        
-        <% unless build_score(um) != "- - - - - " && build_score(um) != "" %>
-          <a href="#" class="btn btn-primary btn-score my-score my-button" 
-          data-toggle="modal" data-target="#scoreModal" data-match="<%= um.id %>">SET SCORE</a>
-        <% else %>
-          <% if user_wins_match(um, current_user) %>
-            <a href="#" class="btn btn-success my-button" disabled>WIN</a>
-          <% elsif user_lose_match(um, current_user) %>
-            <a href="#" class="btn btn-danger my-button" disabled>LOSE</a>
-          <% end %>
+<% if @user_matches %>
+  <table class="table table-bordered table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>Wins / Lose</th>
+        <th>Date - Time</th>
+        <th>Place</th>
+        <th>Price</th>
+        <th>Rivals</th>
+        <th>Rivals Votes</th>
+        <th>Edit Match</th>
+      </tr>
+    </thead>
+    <tbody>  
+      <% @user_matches.each do |um| %>
+        <% if user_belongs_to_match?(um, current_user) %>
+            <% unless build_score(um) != "- - - - - " && build_score(um) != "" %>
+              <tr>
+                <td>
+                  <% if um.creator_id === current_user.id %>
+                    <a href="#" class="btn btn-primary btn-score my-score my-button" 
+                    data-toggle="modal" data-target="#scoreModal" data-match="<%= um.id %>">SET SCORE</a>
+                  <% else %>
+                    <span>NO RESULT YET</span>
+                  <% end %>
+            <% else %>
+              <% if user_wins_match(um, current_user) %>
+                <tr class="success">
+                  <td>
+                <a href="#" class="btn btn-success my-button" disabled>WIN</a>
+              <% elsif user_lose_match(um, current_user) %>
+                <tr class="danger">
+                  <td>
+                    <a href="#" class="btn btn-danger my-button" disabled>LOSE</a>
+              <% end %>
+            <% end %>
+                  </td>
+                  <td><%=link_to um.date.strftime('%F') + ' (' + um.date.strftime("%H:%M") + ')', match_path(um.id) %></td>
+                  <td><%= um.venue %></td>
+                  <td><%= um.price %> €</td>
+                  <span id="score<%= um.id %>" style="display:none;"><%= build_score(um) %></span>
+                  <td>
+                    <% um.rivals(current_user).each do |riv| %>
+                      <%= image_tag riv.avatar.url(:minithumb), class: 'rivals', title: riv.name ,
+                       'data-rival-name': riv.name, 'data-rival': riv.id, 'data-player-match': um.id, 'vrival': voted_rival?(um, riv) %>
+                    <% end %>      
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-info btn-score my-handicap my-button"
+                    data-toggle="modal" data-target="#handicapModal" data-match="<%= um.id %>"><i class="material-icons">trending_up</i> RIVAL VOTES</a>
+                  </td>
+                  <td>
+                    <% if um.creator_id === current_user.id %>
+                      <a href="<%= edit_user_match_path(current_user, um.id) %>" class="btn btn-success my-button">EDIT</a>
+                    <% else %>
+                      <span>NOT OWNER</span>
+                    <% end %>
+                  </td>
+                </tr>
         <% end %>
-
-        <span><%= um.date.strftime('%F') + ' (' + um.date.strftime("%H:%M") + ')' %></span>
-        -
-        <span><%= um.venue %></span>
-        -
-        <span><%= um.price %> €</span>
-
-        <span id="score<%= um.id %>" style="display:none;"><%= build_score(um) %></span>
-        
-        <a href="<%= edit_user_match_path(current_user, um.id) %>" class="btn btn-success my-button">EDIT</a>
-        
-        <a href="#" class="btn btn-info btn-score my-handicap my-button"
-        data-toggle="modal" data-target="#handicapModal" data-match="<%= um.id %>"><i class="material-icons">trending_up</i> RIVAL VOTES</a>
-        
-        <% um.rivals(current_user).each do |riv| %>
-          <%= image_tag riv.avatar.url(:minithumb), class: 'rivals', 'data-rival-name': riv.name, 'data-rival': riv.id, 'data-player-match': um.id %>
-        <% end %>      
-      </div>
-      <br>
-    <% end %>
+      <% end %>
+    </tbody>
+  </table>
   <% else %>
     <h5>No matches created yet...</h5>
   <% end %>

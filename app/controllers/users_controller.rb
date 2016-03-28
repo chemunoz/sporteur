@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     if current_user
       @user.teams.each do |tm|
         # @user_matches = Match.where("(local_team_id = #{tm.id} OR visit_team_id = #{tm.id}) AND creator_id = #{current_user.id}")
-        @user_matches = Match.where("creator_id = #{current_user.id}").order(date: :desc)
+        # @user_matches = Match.where("creator_id = #{current_user.id}").order(date: :asc)
+        @user_matches = Match.order(date: :asc)
       end
     end
   end

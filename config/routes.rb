@@ -11,12 +11,13 @@ Rails.application.routes.draw do
   post 'matches/:id/score' => 'matches#score', as: 'match_score'
   post 'matches/:id/rivals' => 'matches#handicap_rivals', as: 'match_rivals'
   
+  patch 'users/:user_id/matches/:id' => 'matches#update'
+  patch 'matches/:id/score' => 'matches#score'
   
   resources :matches, only: [:index, :show, :edit, :update] do
     resources :teams, only: [:index, :show]
   end
   
-
   resources :users, only: [:index, :show] do
     resources :matches, only: [:index, :show, :new, :create, :edit]  do
       resources :teams, only: [:index, :new, :show, :create]

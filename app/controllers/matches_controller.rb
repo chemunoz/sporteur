@@ -122,11 +122,12 @@ class MatchesController < ApplicationController
     mat = Match.find(params[:id])
     user = User.find(params[:user_id])
     team = which_team_belongs_user?(mat, user)
-  binding.pry
+    team.users.delete(user)
+  
     #params[:id] es el ID del Match, necesito sacar si es de del TEAM LOCAL O VISIT
-    entry = user.teams.find(team)
+    # entry = user.teams.find(team)
     # entry = mat.visit.users.find_by(id: params[:user_id])
-    entry.destroy
+    # entry.destroy
 
     # if @user.teams << team
     #   mat.first.update_attribute(:places_busy, mat.first.places_busy+1)

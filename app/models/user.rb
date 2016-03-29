@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :matches
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>", minithumb: "50x50>" }, default_url: "/images/avatar/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  has_many :comments
 end

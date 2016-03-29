@@ -25,17 +25,16 @@
         <%= form_for [@match, @comment] do |f|%>
             <%= f.label 'Comments:'%>
             <%= f.text_area :message, placeholder: 'Write a comment', class:'sporteur-form-control'%>
-            <br>
             <%= f.submit 'Send Comment'%>
           <%end%>
-          <br>
+          
 
 
           <p>Comments:</p>
-          <ul>
+          <ul class="nav">
             <%@comments_in_bbdd.each do |comm|%>
               <li>
-                <%= comm.message %>
+                <%= image_tag comm.user.avatar.url(:minithumb), class: 'rivals profile-avatar-index', title: comm.user.name %>: <%= comm.message %>
               </li>
             <%end%>
           </ul>

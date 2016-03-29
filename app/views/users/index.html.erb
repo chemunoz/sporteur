@@ -1,10 +1,9 @@
-<a class="btn btn-success" style="margin: 20px;"><i class="material-icons be-icon">sort</i> NTRP RANKING</a>
+<a href="<%= users_rankings_path%>" class="btn btn-success" style="margin: 20px;"><i class="material-icons be-icon">sort</i> NTRP RANKING</a>
 
 <div class="row">
   <% @users.each do |usr| %>
     <div class="col-sm-6 col-md-2" style="top:20px;">
       <div class="thumbnail">
-        <!-- <img src="/assets/user.png" alt="user" class="logo"> -->
         <a href="<%= user_path(usr.id) %>"><%= image_tag usr.avatar.url(:thumb), class: 'profile-avatar-index' %></a>
         <div class="caption user-index">
           <h3><%= usr.name %></h3>

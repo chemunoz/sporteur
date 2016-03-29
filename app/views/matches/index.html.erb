@@ -6,6 +6,7 @@
 
   <div class="col-xs match show_map" style="top:20px;">
     <h2>MATCHES SCHEDULE</h2>
+    <%= will_paginate @matches, :style => 'color:blue' %>
     <% if @matches.length != 0 %>
       <% @matches.each do |mat| %>
         <div class="thumbnail">
@@ -20,6 +21,7 @@
           </div>
         </div>
       <% end %>
+      <%= will_paginate @matches, :style => 'color:blue' %>
     <% else %>
       <h4>There is no matches for now... try later</h4>
     <% end %>

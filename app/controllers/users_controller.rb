@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @users = User.all.order(name: :asc)
   end
 
+
   def show
     @user = User.find(params[:id])
     if current_user
@@ -13,6 +14,10 @@ class UsersController < ApplicationController
         @user_matches = Match.order(date: :asc)
       end
     end
+  end
+
+  def rankings
+    @users_ntrp = User.all.order(name: :asc).order(:ntrp).limit(3)
   end
 
   # User.group(:ntrp).count

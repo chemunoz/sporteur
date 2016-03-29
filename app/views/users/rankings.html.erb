@@ -1,0 +1,76 @@
+<h1>NTRP RANKING</h1>
+
+<div class="container">
+  <div class="row">
+<!-- primer each -->
+    
+
+    <div class="col-md-4">
+    <% @users_ntrp.each do |usr| %>
+      
+        <div class="thumbnail">
+          
+          <a href="<%= user_path(usr.id) %>"><%= image_tag usr.avatar.url(:thumb), class: 'profile-avatar-index' %></a>
+          <div class="caption user-index">
+            <h3><%= usr.name %></h3>
+            
+            <span>NTRP:</span>
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-warning" style="width: <%= (usr.ntrp*100/6) %>%"><%= usr.ntrp %></div>
+            </div>
+            <p><a href="<%= user_path(usr.id) %>" class="btn btn-primary" role="button">VIEW PROFILE</a></p>
+          </div>
+        </div>
+
+
+      
+    <% end %>
+    </div>
+
+
+
+
+    <div class="col-md-4">
+    <% @users_ntrp.each do |usr| %>
+
+      <div class="thumbnail">
+        <!-- <img src="/assets/user.png" alt="user" class="logo"> -->
+        <a href="<%= user_path(usr.id) %>"><%= image_tag usr.avatar.url(:thumb), class: 'profile-avatar-index' %></a>
+        <div class="caption user-index">
+          <h3><%= usr.name %></h3>
+          
+          <span>NTRP:</span>
+          <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-warning" style="width: <%= (usr.ntrp*100/6) %>%"><%= usr.ntrp %></div>
+          </div>
+          <p><a href="<%= user_path(usr.id) %>" class="btn btn-primary" role="button">VIEW PROFILE</a></p>
+        </div>
+      </div>
+
+    <% end %>
+    </div>
+
+
+
+
+    <div class="col-md-4">
+    <% @users_ntrp.each do |usr| %>
+    <div class="thumbnail">
+            <!-- <img src="/assets/user.png" alt="user" class="logo"> -->
+            <a href="<%= user_path(usr.id) %>"><%= image_tag usr.avatar.url(:thumb), class: 'profile-avatar-index' %></a>
+            <div class="caption user-index">
+              <h3><%= usr.name %></h3>
+              
+              <span>NTRP:</span>
+              <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-warning" style="width: <%= (usr.ntrp*100/6) %>%"><%= usr.ntrp %></div>
+              </div>
+              <p><a href="<%= user_path(usr.id) %>" class="btn btn-primary" role="button">VIEW PROFILE</a></p>
+            </div>
+          </div>
+    <% end %>
+    </div>
+
+  </div>
+</div>
+

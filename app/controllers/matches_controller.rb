@@ -1,11 +1,14 @@
 class MatchesController < ApplicationController
+  require 'will_paginate'
+  require 'will_paginate/array'
   # before_action :create_teams, only: [:create]
 
   def index
     if params[:user_id]
       @matches = Match.where(creator_id: params[:user_id]).order(date: :asc)
     else
-      @matches = Match.all.where('date > ?', DateTime.now).order(date: :asc)
+      @matches = Match.all.where('date > ?', DateTime.now).order(date: :asc).paginate(page: params[:page], per_page: 2)
+      # @matches_page = Match.all.paginate(page: params[:page], per_page: 2)
     end
   end
 
@@ -17,6 +20,7 @@ class MatchesController < ApplicationController
 
     @comments_in_bbdd = @match.comments
     @comment = Comment.new
+
     # <p class="sporteur-form-control">Winner: <%= @team_local.users[0].name %></p>
     # <p class="sporteur-form-control">Loser Team: <%= @team_visit.users[0].name %></p>
     
@@ -53,7 +57,6 @@ class MatchesController < ApplicationController
 
 
   def update
-    binding.pry
     @match=Match.find(params[:id])
     if @match.update_attributes match_params
       redirect_to action: :index
@@ -70,7 +73,8 @@ class MatchesController < ApplicationController
 
     if @user.teams << team
       mat.first.update_attribute(:places_busy, mat.first.places_busy+1)
-      redirect_to matches_path, notice: 'Youre in!.' 
+      # redirect_to matches_path, notice: 'Youre in!.' 
+      redirect_to :back
     end
     
   end

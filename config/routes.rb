@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   
   patch 'users/:user_id/matches/:id' => 'matches#update'
   patch 'matches/:id/score' => 'matches#score'
+
+  get 'users/rankings' => 'users#rankings'
   
   resources :matches, only: [:index, :show, :edit, :update] do
     resources :teams, only: [:index, :show]

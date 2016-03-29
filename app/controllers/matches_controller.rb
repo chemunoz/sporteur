@@ -15,6 +15,8 @@ class MatchesController < ApplicationController
     @team_local = Team.find_by(id: @match.local_team_id)
     @team_visit = Team.find_by(id: @match.visit_team_id)
 
+    @comments_in_bbdd = @match.comments
+    @comment = Comment.new
     # <p class="sporteur-form-control">Winner: <%= @team_local.users[0].name %></p>
     # <p class="sporteur-form-control">Loser Team: <%= @team_visit.users[0].name %></p>
     

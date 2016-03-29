@@ -20,7 +20,28 @@
     
     <%= render 'match_players', team: @team_local, type_user: 'profile-avatar-index_local', type: 'btn-primary' %>
     <%= render 'match_players', team: @team_visit, type_user: 'profile-avatar-index_visit', type: 'btn-success' %>
+
+      <div>
+        <%= form_for [@match, @comment] do |f|%>
+            <%= f.label 'Comments:'%>
+            <%= f.text_area :message, placeholder: 'Write a comment', class:'sporteur-form-control'%>
+            <br>
+            <%= f.submit 'Send Comment'%>
+          <%end%>
+          <br>
+
+
+          <p>Comments:</p>
+          <ul>
+            <%@comments_in_bbdd.each do |comm|%>
+              <li>
+                <%= comm.message %>
+              </li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
   </div>
-
-
 </div>
+
+

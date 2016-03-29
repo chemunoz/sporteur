@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325130611) do
+ActiveRecord::Schema.define(version: 20160329090941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "match_id"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["match_id"], name: "index_comments_on_match_id", using: :btree
 
   create_table "handicaps", force: :cascade do |t|
     t.integer  "match_id"

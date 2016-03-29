@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
-
+  resources :matches, only: [:index, :show, :edit, :update] do
+    resources :comments, only: [:create]
+  end
+  
 
 
 

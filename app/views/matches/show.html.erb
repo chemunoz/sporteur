@@ -6,7 +6,9 @@
 
   <div class="col-xs match show_map">
     <h3>MATCH DETAILS ...</h3>
-    <p class="sporteur-form-control">Score: <%= build_score(@match) %></p>
+    <% if @match.date < DateTime.now %>
+      <p class="sporteur-form-control">Score: <%= build_score(@match) %></p>
+    <% end %>
     <p class="sporteur-form-control">Date: <%=  @match.date!=nil ?  @match.date.strftime("%A") +" - " +  @match.date.strftime('%v') + ' (' +  @match.date.strftime("%H:%M") + ')' :  @match.date %></p>
     <p class="sporteur-form-control venue">Venue: <%= @match.venue %></p>
     <p class="sporteur-form-control">Price: <%= @match.price %> €</p>

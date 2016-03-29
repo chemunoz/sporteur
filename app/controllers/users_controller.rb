@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all.order(name: :asc)
   end
@@ -13,4 +14,6 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  # User.group(:ntrp).count
 end

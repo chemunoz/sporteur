@@ -63,7 +63,7 @@ class MatchesController < ApplicationController
 
   def join
     @user = User.find(current_user.id)
-    team = Team.find_by(id:params[:id])
+    team = Team.find_by(id: params[:id])
     mat = Match.where("(local_team_id = #{team.id} OR visit_team_id = #{team.id})")
 
     if @user.teams << team
@@ -99,7 +99,7 @@ class MatchesController < ApplicationController
   def handicap_rivals
     # {"match_id"=>"1", "rival0_id"=>"2", "rival0_vote"=>"", "rival1_id"=>"4", "rival1_vote"=>"", "controller"=>"matches", "action"=>"handicap_rivals", "id"=>"1"}
     for i in 0..1
-      if params["rival#{i}_id"]
+      if params["rival#{i}_id"] && params["rival#{i}_vote"]!=""
         hand = Handicap.new
         hand.match_id = params['match_id']
         hand.judge = params['judge']
@@ -113,8 +113,26 @@ class MatchesController < ApplicationController
         player.save
       end
     end
-    redirect_to user_path(current_user)
+    redirect_to :back
   end
+
+
+  def destroy
+
+    mat = Match.find(params[:id])
+    user = User.find(params[:user_id])
+    team = which_team_belongs_user?(mat, user)
+  binding.pry
+    #params[:id] es el ID del Match, necesito sacar si es de del TEAM LOCAL O VISIT
+    entry = user.teams.find(team)
+    # entry = mat.visit.users.find_by(id: params[:user_id])
+    entry.destroy
+
+    # if @user.teams << team
+    #   mat.first.update_attribute(:places_busy, mat.first.places_busy+1)
+    redirect_to :back
+  end
+
 
 
   private
@@ -144,6 +162,17 @@ class MatchesController < ApplicationController
       m.loser = m.local_team_id
     end
     m.save
+  end
+
+
+  def which_team_belongs_user?(match, user)
+    if match.local.users.exists?(user)
+      return match.local
+    elsif match.visit.users.exists?(user)
+      return match.visit
+    else
+      return 0
+    end
   end
 
 end

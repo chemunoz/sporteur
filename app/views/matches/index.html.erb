@@ -1,29 +1,27 @@
 <div class="row">
+
   <div class="col-xs match">
     <div id="map"></div>
   </div>
 
   <div class="col-xs match show_map" style="top:20px;">
-  <h2>MATCHES SCHEDULE</h2>
-  <% if @matches.length != 0 %>
-    <% @matches.each do |mat| %>
+    <h2>MATCHES SCHEDULE</h2>
+    <% if @matches.length != 0 %>
+      <% @matches.each do |mat| %>
         <div class="thumbnail">
           <div class="caption">
             <p class="venue">
-            <h5><%= mat.date!=nil ? mat.date.strftime("%A") +" - " + mat.date.strftime('%v') + ' (' + mat.date.strftime("%H:%M") + ')' : mat.date %>
-            </h5>
-            <a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">DETAILS</a>
-            <%= mat.venue %>
+              <h5><i class="material-icons be-icon">alarm_on</i> <%= mat.date!=nil ? mat.date.strftime("%A") +" - " + mat.date.strftime('%v') + ' (' + mat.date.strftime("%H:%M") + ')' : mat.date %></h5>
+              <div><i class="material-icons be-icon">room</i> <%= mat.venue %></div>
+              <div style="margin: 10px 0 0 0;"><a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">DETAILS</a> Free places: <%= mat.places - mat.places_busy %></div>
             </p>
-            <p>Free places: <%= mat.places - mat.places_busy %></p>
             <p class="sporteur-form-control lat hidden"><%= mat.lat %></p>
             <p class="sporteur-form-control lng hidden"><%= mat.lng %></p>
-            
           </div>
         </div>
+      <% end %>
+    <% else %>
+      <h4>There is no matches for now... try later</h4>
     <% end %>
-  <% else %>
-    <h4>There is no matches for now... try later</h4>
-  <% end %>
   </div>
 </div>

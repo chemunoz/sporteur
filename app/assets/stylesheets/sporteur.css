@@ -8,9 +8,30 @@ th, td{
   text-align: center;
 }
 
+.fill{
+  opacity: 0.6;
+}
+
+
+.be-icon{
+  font-family: 'Material Icons';
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
 
 /* NAVIGATION*/
- .be-icon{
+ .be-menu-icon{
   font-family: 'Material Icons';
   text-rendering: optimizeLegibility;
   font-feature-settings: "liga" 1;
@@ -43,6 +64,7 @@ th, td{
 }
 
 
-.title{
-  font-size: 20px;
+.player-voted{
+  /*font-size: 20px;*/
+  background-color: #DDD;
 }

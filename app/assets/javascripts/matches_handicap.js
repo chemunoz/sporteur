@@ -38,14 +38,14 @@ $(document).ready(function(){
     var number=0;
     $('.rivals').each(function(i, riv){
       if (current_match === $(this).attr("data-player-match")){
-        $('.modal-handicap-body').append('<p class="title" id="rival'+ number +'" data-rival="'+$(this).attr("data-rival")+'" data-vote="" data-match=""></p>');
+        $('.modal-handicap-body').append('<p class="player-voted" id="rival'+ number +'" data-rival="'+$(this).attr("data-rival")+'" data-vote="" data-match=""></p>');
         var html=""; 
         if ($(this).attr("vrival")==='false'){
         for (var j=2; j<13; j++){ 
               html += "<label class='btn btn-info'><input type='radio' name='options' id='option"+ j +"' autocomplete='off'> "+parseFloat(j/2)+"</label>";
             }
           }else
-            html = '<p>YA votaste!! ;D</p>';
+            html = '<p class="voted">YA votaste!! ;D</p>';
         $('.modal-handicap-body').append('<div class="btn-group group-rival'+ number +'" data-toggle="buttons">'+html+'</div>');
 
         $('#rival'+number).text($(this).attr("data-rival-name"));

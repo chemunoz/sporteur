@@ -5,12 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create name: "Chema", email: "che@che.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
-User.create name: "Rachel", email: "rach@rach.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
-User.create name: "Christopher", email: "chris@chris.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
-User.create name: "Manu", email: "manu@manu.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
-User.create name: "Pau", email: "pau@pau.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
-User.create name: "Joaqi", email: "joa@joa.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Kevin", email: "kev@in.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Ariadna", email: "ari@adna.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Maximiliano", email: "maxi@miliano.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Rebeca", email: "rebe@ca.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Joaquin", email: "joa@quin.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Manuel", email: "manu@el.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Jennifer", email: "jenni@fer.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Cosme", email: "cos@me.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Patricia", email: "patri@cia.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Mariola", email: "mari@ola.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+User.create name: "Miguel", email: "mi@guel.com", password: 12345678, height: 177, weight:80, hand_orientation: 'Right-hand'
+
 
 # Team.create name: "Racing de Santander", tshirt_color: "green", address: 'Avenida de El Sardinero'
 # Team.create name: "Celta de Vigo", tshirt_color: "blue", address: 'Vigo'

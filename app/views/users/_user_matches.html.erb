@@ -5,10 +5,10 @@ Wan: <span id="match_win"><%= matches_user_play(current_user,1) %> - </span>
 Losed: <span id="match_lose"><%= matches_user_play(current_user, 2) %>)</span>
 </span>
 <% if @user_matches %>
-  <table class="table table-bordered table-hover table-responsive">
+  <table class="table table-bordered table-hover table-responsive my-matches">
     <thead>
       <tr>
-        <th>Wins / Lose</th>
+        <th>Wins/Loses</th>
         <th>Date - Time</th>
         <th>Place</th>
         <th>Price</th>
@@ -43,12 +43,12 @@ Losed: <span id="match_lose"><%= matches_user_play(current_user, 2) %>)</span>
                   </td>
                   <td><%=link_to um.date.strftime('%F') + ' (' + um.date.strftime("%H:%M") + ')', match_path(um.id) %></td>
                   <td><%= um.venue %></td>
-                  <td><%= um.price %> €</td>
+                  <td><%= um.price %>€</td>
                   <span id="score<%= um.id %>" style="display:none;"><%= build_score(um) %></span>
                   <td>
                     <% um.rivals(current_user).each do |riv| %>
-                      <%= image_tag riv.avatar.url(:minithumb), class: 'rivals', title: riv.name ,
-                       'data-rival-name': riv.name, 'data-rival': riv.id, 'data-player-match': um.id, 'vrival': voted_rival?(um, riv) %>
+                      <%= image_tag riv.avatar.url(:minithumb), class: 'rivals profile-avatar-index', title: riv.name ,
+                       'data-rival-name': riv.name, 'data-rival': riv.id, 'data-player-match': um.id, 'vrival': voted_rival?(um, current_user, riv) %>
                     <% end %>      
                   </td>
                   <td>
@@ -59,7 +59,7 @@ Losed: <span id="match_lose"><%= matches_user_play(current_user, 2) %>)</span>
                     <% if um.creator_id === current_user.id %>
                       <a href="<%= edit_user_match_path(current_user, um.id) %>" class="btn btn-success my-button">EDIT</a>
                     <% else %>
-                      <span>NOT OWNER</span>
+                      <span><i class="material-icons be-icon">https</i> NOT OWNER</span>
                     <% end %>
                   </td>
                 </tr>

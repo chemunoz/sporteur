@@ -9,7 +9,7 @@ module MatchesHelper
     match.visit.exists?(id:team.id) || 
     match.local.exists?(id:team.id)
   end
-  
+
   # def rival_team(match, user)
   #   binding.pry
   #   match.not.teams
@@ -36,8 +36,8 @@ module MatchesHelper
     return score
   end
 
-  def voted_rival?(match, rival)
-    Handicap.where(match_id: match, voted_player: rival).exists?
+  def voted_rival?(match, judger, rival)
+    Handicap.where(match_id: match, judge: judger, voted_player: rival).exists?
   end
 
 

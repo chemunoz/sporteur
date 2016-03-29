@@ -38,20 +38,11 @@
 
 /*USER PROFILE*/
 .my-matches{
-  /*display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: space-around;*/
-
-  width: 100%;
-  margin: 0 auto;
-  background-color: tomato;
+  font-size: 0.8em;
 }
 
 .my-match{
-  background-color: yellow;
-  padding: 3px;
-  border-radius: 3px;
+  
 }
 
 .my-button{
@@ -64,3 +55,8 @@
   padding: 5px;
 }
 
+.voted{
+  border-radius: 15px;
+  background-color: orange;
+  padding: 10px;
+}

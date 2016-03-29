@@ -97,7 +97,6 @@ class MatchesController < ApplicationController
 
 
   def handicap_rivals
-    # {"match_id"=>"1", "rival0_id"=>"2", "rival0_vote"=>"", "rival1_id"=>"4", "rival1_vote"=>"", "controller"=>"matches", "action"=>"handicap_rivals", "id"=>"1"}
     for i in 0..1
       if params["rival#{i}_id"] && params["rival#{i}_vote"]!=""
         hand = Handicap.new
@@ -124,13 +123,7 @@ class MatchesController < ApplicationController
     team = which_team_belongs_user?(mat, user)
     team.users.delete(user)
   
-    #params[:id] es el ID del Match, necesito sacar si es de del TEAM LOCAL O VISIT
-    # entry = user.teams.find(team)
-    # entry = mat.visit.users.find_by(id: params[:user_id])
-    # entry.destroy
-
-    # if @user.teams << team
-    #   mat.first.update_attribute(:places_busy, mat.first.places_busy+1)
+    mat.first.update_attribute(:places_busy, mat.first.places_busy-1)
     redirect_to :back
   end
 

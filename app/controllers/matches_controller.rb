@@ -1,14 +1,13 @@
 class MatchesController < ApplicationController
   require 'will_paginate'
   require 'will_paginate/array'
-  # before_action :create_teams, only: [:create]
+  before_action :create_teams, only: [:create]
 
   def index
     if params[:user_id]
       @matches = Match.where(creator_id: params[:user_id]).order(date: :asc)
     else
-      @matches = Match.all.where('date > ?', DateTime.now).order(date: :asc).paginate(page: params[:page], per_page: 2)
-      # @matches_page = Match.all.paginate(page: params[:page], per_page: 2)
+      @matches = Match.all.where('date > ?', DateTime.now).order(date: :asc).paginate(page: params[:page], per_page: 3)
     end
   end
 
@@ -20,11 +19,6 @@ class MatchesController < ApplicationController
 
     @comments_in_bbdd = @match.comments
     @comment = Comment.new
-
-    # <p class="sporteur-form-control">Winner: <%= @team_local.users[0].name %></p>
-    # <p class="sporteur-form-control">Loser Team: <%= @team_visit.users[0].name %></p>
-    
-    #PARTIAL <a href="#" class="btn <%= type %>" disabled><%= team.users[i].name %></a>
   end
 
 
@@ -34,9 +28,6 @@ class MatchesController < ApplicationController
 
 
   def create
-   @user = User.find(current_user.id)
-   create_teams
-  
    @match = Match.new(match_params)
    @match.local_team_id = @local_team.id
    @match.visit_team_id = @visit_team.id
@@ -129,7 +120,7 @@ class MatchesController < ApplicationController
     team = which_team_belongs_user?(mat, user)
     team.users.delete(user)
   
-    mat.first.update_attribute(:places_busy, mat.first.places_busy-1)
+    mat.update_attribute(:places_busy, mat.places_busy-1)
     redirect_to :back
   end
 
@@ -141,6 +132,7 @@ class MatchesController < ApplicationController
   end
 
   def create_teams
+    @user = User.find(current_user.id)
     @local_team = @user.teams.create
     @visit_team = Team.create
   end

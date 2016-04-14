@@ -12,7 +12,7 @@
         <div class="thumbnail">
           <div class="caption">
             <p class="venue">
-              <h5><i class="material-icons be-icon">alarm_on</i> <%= mat.date!=nil ? mat.date.strftime("%A") +" - " + mat.date.strftime('%v') + ' (' + mat.date.strftime("%H:%M") + ')' : mat.date %></h5>
+              <h5><i class="material-icons be-icon">alarm_on</i> <%= mat.date!=nil ? mat.date.strftime("%A") + " - " + mat.date.strftime('%v') + ' (' + mat.date.strftime("%H:%M") + ')' : mat.date %></h5>
               <div><i class="material-icons be-icon">room</i> <%= mat.venue %></div>
               <div style="margin: 10px 0 0 0;"><a href="<%= match_path(mat.id) %>" class="btn btn-primary" role="button">DETAILS</a> Free places: <%= mat.places - mat.places_busy %></div>
             </p>

@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:message)
-    #Nos aseguramos que haya una key "entry" y si la hay esas keys de permit
+    params.require(:comment).permit(:message) 
   end
 end

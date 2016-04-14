@@ -1,15 +1,22 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans); 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Economica:400,700);
 
-h1, h2, h3, h4, h5, h6, p{
+
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
+
+p, .pagination, .previous_page{
+  font-family: 'Open Sans', sans-serif !important;
+  /*font-family: 'Comic Sans', sans-serif !important;*/
+  
 }
 
 th, td{
   text-align: center;
-}
-
-.fill{
-  opacity: 0.7;
 }
 
 
@@ -29,6 +36,9 @@ th, td{
   vertical-align: middle;
 }
 
+.rankins-title{
+  font-size: 2em;
+}
 
 /* NAVIGATION*/
  .be-menu-icon{
@@ -48,6 +58,10 @@ th, td{
   vertical-align: middle;
 }
 
+.navbar-brand{
+  font-family: 'Economica', sans-serif;
+  font-size: 3.8em;
+}
 
 .sporteur-form-control{
   border:none;
@@ -63,8 +77,6 @@ th, td{
   width: 200px;
 }
 
-
-.player-voted{
-  /*font-size: 20px;*/
-  background-color: #DDD;
+.sporteur-carousel{
+  top:-15px;
 }

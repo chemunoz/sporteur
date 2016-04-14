@@ -33,7 +33,7 @@
 
 
 
-<% if current_user %>
+<% if current_user===@user %>
     <div class="row profile-container">
       <div class="col-xs-12 profile">
         <%= render 'user_matches' %>

@@ -5,7 +5,7 @@ $(document).on("ready", function(){
             // iris data from R
             columns: [
                 ['Wins', parseInt($('#match_win')[0].innerText)],
-                ['Loses', parseInt($('#match_lose')[0].innerText)],
+                ['Losses', parseInt($('#match_lose')[0].innerText)],
             ],
             type : 'pie',
             onclick: function (d, i) { console.log("onclick", d, i); },
@@ -15,5 +15,3 @@ $(document).on("ready", function(){
     });
   }
 });
-
-

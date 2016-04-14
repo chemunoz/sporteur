@@ -10,23 +10,21 @@ function checkEnter(e){
 
 function initMap(){
 
-  //NEW View
+  //NEW & EDIT View
   if ($('.new_map').length>0){
     var myPosition = {
       lat: 40.4382915,
       lng: -3.6836605
     };
-
     if ($('.edit_map').length>0){
       zoom=12;
       createMap(myPosition, zoom);
       createMarker(myPosition, document.getElementsByClassName('venue'));
     }
-    else
-      {
+    else{
       zoom=8;
       createMap(myPosition, zoom);
-      }
+    }
     setupAutocomplete();
   }
 
@@ -129,11 +127,3 @@ $(document).on("ready", function(){
   }
   initMap();
 });
-
-
-
-
-
-
-
-//createMarker({lat: 40.4425012, lng: -3.681632});

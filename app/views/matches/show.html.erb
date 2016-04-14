@@ -23,24 +23,22 @@
 
       <div>
         <%= form_for [@match, @comment] do |f|%>
-            <%= f.label 'Comments:'%>
-            <%= f.text_area :message, placeholder: 'Write a comment', class:'sporteur-form-control'%>
-            <%= f.submit 'Send Comment'%>
-          <%end%>
+          <%= f.label 'Comments:'%>
+          <%= f.text_area :message, placeholder: 'Write a comment', class:'sporteur-form-control'%>
+          <%= f.submit 'Send Comment'%>
+        <%end%>
           
-
-
-          <p>Comments:</p>
+        <p>Comments:</p>
           <ul class="nav">
             <%@comments_in_bbdd.each do |comm|%>
-              <li>
-                <%= image_tag comm.user.avatar.url(:minithumb), class: 'rivals profile-avatar-index', title: comm.user.name %>: <%= comm.message %>
-              </li>
+            <li>
+              <%= image_tag comm.user.avatar.url(:minithumb), class: 'rivals profile-avatar-index', title: comm.user.name %>: <%= comm.message %>
+            </li>
             <%end%>
           </ul>
-        </div>
       </div>
   </div>
+</div>
 </div>
 
 

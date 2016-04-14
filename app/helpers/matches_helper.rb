@@ -51,7 +51,8 @@ module MatchesHelper
     user.teams.each do |t|
       case type
       when 0    
-        locals = locals + Match.where("(local_team_id =#{t.id} OR visit_team_id = #{t.id}) AND winner IS NOT NULL AND loser IS NOT NULL").count.to_i
+        locals = locals + Match.where("(local_team_id =#{t.id} OR visit_team_id = #{t.id}) 
+          AND winner IS NOT NULL AND loser IS NOT NULL").count.to_i
         # visits = visits + Match.where(visit_team_id: t.id).count.to_i
       when 1
         locals = locals + Match.where(winner: t.id).count.to_i

@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>", minithumb: "50x50>" }, default_url: "/images/avatar/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   has_many :comments
+
+  validates :name, length: {maximum: 30}
+  validates :name, format: {with: /\A[a-zA-ZÑñ0-9]+\Z/} #Ver rubular.com
+  validates :name, uniqueness: true
 end

@@ -24,6 +24,6 @@ module Sporteur
     config.active_record.raise_in_transactional_callbacks = true
 
     #To deploy in Heroku
-    config.serve_static_assets = true
+    #config.serve_static_assets = true
   end
 end
